@@ -8,7 +8,12 @@ type state = {
 
 let component = ReasonReact.reducerComponent("Counter");
 
-let make = (_children) => {
+let goToHome = (router, event) => {
+  ReactEventRe.Mouse.preventDefault(event);
+  DirectorRe.setRoute(router, "/")
+};
+
+let make = (~router, _children) => {
   ...component,
   initialState: () => {count: 0, timerId: ref(None)},
   reducer: (action, state) =>
@@ -24,5 +29,10 @@ let make = (_children) => {
     | Some(timerId) => Js.Global.clearInterval(timerId)
     | None => ()
     },
-  render: ({state}) => <div> (ReasonReact.stringToElement(string_of_int(state.count))) </div>
+  render: ({state}) =>
+    <div>
+      (ReasonReact.stringToElement(string_of_int(state.count)))
+      <br />
+      <a href="#" onClick=(goToHome(router))> (ReasonReact.stringToElement("Home")) </a>
+    </div>
 };

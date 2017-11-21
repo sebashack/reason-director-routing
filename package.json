@@ -17,7 +17,9 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "reason-react": "0.2.4"
+    "reason-react": "0.2.4",
+    "express": "4.16.2",
+    "bs-director": "0.0.5"
   },
   "devDependencies": {
     "bs-platform": "^2.0.0",
